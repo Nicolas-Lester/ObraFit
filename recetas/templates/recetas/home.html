@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Inicio - Alimentación para Construcción{% endblock %}
+{% block content %}
+<div class="welcome-section">
+  <h1>Alimentación para tu Jornada Laboral</h1>
+  <p class="lead mb-4">Recetas simples, económicas y llenas de energía para el trabajo diario</p>
+  
+  <!-- Carrusel de imágenes -->
+  <div id="mainCarousel" class="carousel slide carousel-custom" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="d-block w-100" alt="Comida energética">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Energía para Todo el Día</h3>
+          <p>Alimentos que te mantienen activo en la obra</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Comidas simples">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Recetas Fáciles y Rápidas</h3>
+          <p>Prepara tu comida en menos de 30 minutos</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Alimentación saludable">
+        <div class="carousel-caption d-none d-md-block">
+          <h3>Alimentación Saludable</h3>
+          <p>Mejora tu rendimiento con una dieta balanceada</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+  
+  <!-- Categorías principales -->
+  <div class="row mt-5">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body text-center p-4">
+          <div class="card-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3 class="card-title">Recetas Rápidas</h3>
+          <p class="card-text">Preparaciones en menos de 30 minutos para cuando llegas cansado a casa.</p>
+          <a href="#" class="btn btn-sm btn-primary mt-3">Ver Recetas <i class="fas fa-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body text-center p-4">
+          <div class="card-icon">
+            <i class="fas fa-coins"></i>
+          </div>
+          <h3 class="card-title">Económicas</h3>
+          <p class="card-text">Recetas nutritivas con ingredientes accesibles que no afectan tu bolsillo.</p>
+          <a href="#" class="btn btn-sm btn-primary mt-3">Ver Recetas <i class="fas fa-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body text-center p-4">
+          <div class="card-icon">
+            <i class="fas fa-dumbbell"></i>
+          </div>
+          <h3 class="card-title">Energizantes</h3>
+          <p class="card-text">Alimentos que te darán la fuerza necesaria para rendir en tu jornada laboral.</p>
+          <a href="#" class="btn btn-sm btn-primary mt-3">Ver Recetas <i class="fas fa-arrow-right ms-1"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Consejos nutricionales -->
+  <div class="tips-section">
+    <h2 class="text-center mb-4"><i class="fas fa-lightbulb me-2"></i>Consejos para una Buena Alimentación en la Construcción</h2>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="tip-item">
+          <div class="tip-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div>
+            <h5>Desayuno Completo</h5>
+            <p>Comienza el día con un desayuno que incluya proteínas (huevos, yogur), carbohidratos (pan, avena) y frutas para mantener la energía toda la mañana.</p>
+          </div>
+        </div>
+        
+        <div class="tip-item">
+          <div class="tip-icon">
+            <i class="fas fa-apple-alt"></i>
+          </div>
+          <div>
+            <h5>Meriendas Cada 3 Horas</h5>
+            <p>Lleva frutas, frutos secos o barras de granola para mantener tus niveles de energía estables durante la jornada.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="tip-item">
+          <div class="tip-icon">
+            <i class="fas fa-tint"></i>
+          </div>
+          <div>
+            <h5>Hidratación Constante</h5>
+            <p>Bebe al menos 2 litros de agua durante tu jornada laboral, especialmente en días calurosos para evitar la deshidratación.</p>
+          </div>
+        </div>
+        
+        <div class="tip-item">
+          <div class="tip-icon">
+            <i class="fas fa-carrot"></i>
+          </div>
+          <div>
+            <h5>Lunch Balanceado</h5>
+            <p>Tu comida principal debe incluir una porción de proteínas (pollo, carne, legumbres), verduras y una porción moderada de arroz o pasta.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-4">
+      <a href="#" class="btn btn-primary">Ver Todos los Consejos</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Inicializar el carrusel con intervalo de 5 segundos
+  var myCarousel = new bootstrap.Carousel(document.getElementById('mainCarousel'), {
+    interval: 5000
+  });
+});
+</script>
+{% endblock %}
