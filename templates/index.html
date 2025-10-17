@@ -1,0 +1,405 @@
+{% extends 'base.html' %}
+
+{% block title %}ObraFit - Alimentación Inteligente para Constructores{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-br from-primary-600 via-primary-500 to-mint-500 text-white overflow-hidden">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-mint-300 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Texto Principal -->
+      <div class="animate-slide-up">
+        <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+          <i class="fas fa-star text-yellow-300 mr-2"></i>
+          <span class="text-sm font-semibold">Tu Aliado en Nutrición Laboral</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
+          Alimentación <span class="text-mint-200">Inteligente</span> para Constructores
+        </h1>
+        
+        <p class="text-lg md:text-xl text-primary-50 mb-8 leading-relaxed">
+          Descubre cómo una nutrición adecuada puede transformar tu energía, rendimiento y bienestar. 
+          Aprende, calcula y mejora tu alimentación de forma simple y efectiva.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#comenzar" class="bg-white text-primary-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-mint-50 transform hover:scale-105 transition-all duration-200 shadow-xl text-center">
+            <i class="fas fa-rocket mr-2"></i>Comenzar Ahora
+          </a>
+          <a href="#como-funciona" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary-600 transition-all duration-200 text-center">
+            <i class="fas fa-play-circle mr-2"></i>Cómo Funciona
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-6 mt-12">
+          <div class="text-center">
+            <div class="text-3xl font-bold text-mint-200">500+</div>
+            <div class="text-sm text-primary-100">Recetas Saludables</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-mint-200">98%</div>
+            <div class="text-sm text-primary-100">Satisfacción</div>
+          </div>
+          <div class="text-center">
+            <div class="text-3xl font-bold text-mint-200">24/7</div>
+            <div class="text-sm text-primary-100">Disponible</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Imagen Ilustrativa -->
+      <div class="hidden lg:block animate-fade-in">
+        <div class="relative">
+          <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 shadow-2xl">
+            <div class="bg-gradient-to-br from-mint-400 to-primary-400 rounded-2xl p-8 text-center">
+              <i class="fas fa-hard-hat text-white text-9xl mb-4"></i>
+              <p class="text-white font-semibold text-xl">Tu Salud, Nuestra Prioridad</p>
+            </div>
+          </div>
+          <!-- Floating Elements -->
+          <div class="absolute -top-6 -right-6 bg-yellow-400 rounded-full p-4 shadow-lg animate-pulse-slow">
+            <i class="fas fa-apple-alt text-white text-2xl"></i>
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-mint-400 rounded-full p-4 shadow-lg animate-pulse-slow" style="animation-delay: 1s;">
+            <i class="fas fa-heartbeat text-white text-2xl"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave Divider -->
+  <div class="absolute bottom-0 left-0 w-full">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z" fill="#fafaf9"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Características Principales -->
+<section class="py-20 bg-warm-50" id="como-funciona">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Título de Sección -->
+    <div class="text-center mb-16 animate-slide-up">
+      <h2 class="text-4xl md:text-5xl font-display font-bold text-warm-900 mb-4">
+        ¿Cómo Funciona <span class="text-primary-600">ObraFit</span>?
+      </h2>
+      <p class="text-xl text-warm-600 max-w-3xl mx-auto">
+        Una plataforma completa diseñada para mejorar tu alimentación y calidad de vida
+      </p>
+    </div>
+
+    <!-- Grid de Características -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Característica 1 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group">
+        <div class="bg-gradient-to-br from-primary-500 to-primary-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-calculator text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-display font-bold text-warm-900 mb-4">Calculadora Nutricional</h3>
+        <p class="text-warm-600 leading-relaxed mb-4">
+          Calcula tus necesidades diarias de proteínas, carbohidratos y calorías según tu peso, actividad y objetivos.
+        </p>
+        <a href="#" class="text-primary-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all duration-200">
+          Calcular ahora <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+      </div>
+
+      <!-- Característica 2 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group">
+        <div class="bg-gradient-to-br from-mint-500 to-mint-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-utensils text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-display font-bold text-warm-900 mb-4">Recetas Saludables</h3>
+        <p class="text-warm-600 leading-relaxed mb-4">
+          Más de 500 recetas diseñadas para trabajadores, fáciles de preparar, económicas y nutritivas.
+        </p>
+        <a href="#" class="text-mint-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all duration-200">
+          Ver recetas <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+      </div>
+
+      <!-- Característica 3 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group">
+        <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-graduation-cap text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-display font-bold text-warm-900 mb-4">Modo Aprendizaje</h3>
+        <p class="text-warm-600 leading-relaxed mb-4">
+          Aprende de forma interactiva con quizzes, tips y contenido educativo sobre nutrición y bienestar.
+        </p>
+        <a href="#" class="text-yellow-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all duration-200">
+          Comenzar a aprender <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+      </div>
+
+      <!-- Característica 4 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group">
+        <div class="bg-gradient-to-br from-green-500 to-green-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-chart-line text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-display font-bold text-warm-900 mb-4">Seguimiento de Progreso</h3>
+        <p class="text-warm-600 leading-relaxed mb-4">
+          Monitorea tu evolución con gráficos visuales, estadísticas y logros desbloqueables.
+        </p>
+        <a href="#" class="text-green-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all duration-200">
+          Ver mi progreso <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+      </div>
+
+      <!-- Característica 5 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group">
+        <div class="bg-gradient-to-br from-purple-500 to-purple-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-mobile-alt text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-display font-bold text-warm-900 mb-4">100% Responsive</h3>
+        <p class="text-warm-600 leading-relaxed mb-4">
+          Accede desde cualquier dispositivo: computadora, tablet o smartphone. Siempre disponible.
+        </p>
+        <a href="#" class="text-purple-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all duration-200">
+          Más información <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+      </div>
+
+      <!-- Característica 6 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group">
+        <div class="bg-gradient-to-br from-red-500 to-red-600 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <i class="fas fa-headset text-white text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-display font-bold text-warm-900 mb-4">Soporte Personalizado</h3>
+        <p class="text-warm-600 leading-relaxed mb-4">
+          Nuestro equipo está disponible para resolver tus dudas y ayudarte en tu camino hacia una vida más saludable.
+        </p>
+        <a href="#" class="text-red-600 font-semibold inline-flex items-center group-hover:gap-2 transition-all duration-200">
+          Contactar <i class="fas fa-arrow-right ml-1"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Por Qué Elegirnos -->
+<section class="py-20 bg-gradient-to-br from-primary-50 to-mint-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Imagen/Icono -->
+      <div class="order-2 lg:order-1">
+        <div class="bg-white rounded-3xl p-8 shadow-xl">
+          <div class="grid grid-cols-2 gap-6">
+            <div class="bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl p-6 text-center text-white">
+              <i class="fas fa-apple-alt text-4xl mb-3"></i>
+              <p class="font-semibold">Nutrición Balanceada</p>
+            </div>
+            <div class="bg-gradient-to-br from-mint-500 to-mint-600 rounded-2xl p-6 text-center text-white">
+              <i class="fas fa-dumbbell text-4xl mb-3"></i>
+              <p class="font-semibold">Energía y Fuerza</p>
+            </div>
+            <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-2xl p-6 text-center text-white">
+              <i class="fas fa-brain text-4xl mb-3"></i>
+              <p class="font-semibold">Educación Continua</p>
+            </div>
+            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl p-6 text-center text-white">
+              <i class="fas fa-heart text-4xl mb-3"></i>
+              <p class="font-semibold">Vida Saludable</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Texto -->
+      <div class="order-1 lg:order-2">
+        <h2 class="text-4xl md:text-5xl font-display font-bold text-warm-900 mb-6">
+          ¿Por Qué Elegir <span class="text-primary-600">ObraFit</span>?
+        </h2>
+        <p class="text-xl text-warm-600 mb-6 leading-relaxed">
+          Somos la primera plataforma diseñada específicamente para trabajadores de la construcción, 
+          entendiendo sus necesidades únicas de energía, nutrición y tiempo.
+        </p>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-4">
+            <div class="bg-primary-100 rounded-full p-2 flex-shrink-0">
+              <i class="fas fa-check text-primary-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-warm-900 mb-1">Diseñado para Ti</h4>
+              <p class="text-warm-600">Contenido adaptado al estilo de vida de los trabajadores de la construcción.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="bg-mint-100 rounded-full p-2 flex-shrink-0">
+              <i class="fas fa-check text-mint-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-warm-900 mb-1">Fácil y Práctico</h4>
+              <p class="text-warm-600">Interfaz simple, recetas rápidas y herramientas intuitivas.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="bg-yellow-100 rounded-full p-2 flex-shrink-0">
+              <i class="fas fa-check text-yellow-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-warm-900 mb-1">Basado en Ciencia</h4>
+              <p class="text-warm-600">Información respaldada por nutricionistas y expertos en salud.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="bg-green-100 rounded-full p-2 flex-shrink-0">
+              <i class="fas fa-check text-green-600"></i>
+            </div>
+            <div>
+              <h4 class="font-bold text-warm-900 mb-1">Gratis y Accesible</h4>
+              <p class="text-warm-600">Sin costos ocultos. Tu bienestar es nuestra misión.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#comenzar" class="bg-gradient-to-r from-primary-500 to-mint-500 text-white px-8 py-4 rounded-full font-bold text-lg inline-flex items-center hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+          <i class="fas fa-rocket mr-2"></i>Comenzar mi Viaje
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-20 bg-gradient-to-r from-primary-600 to-mint-600 text-white" id="comenzar">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <i class="fas fa-star text-yellow-300 text-5xl mb-6 animate-pulse-slow"></i>
+    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">
+      ¿Listo para Transformar tu Alimentación?
+    </h2>
+    <p class="text-xl text-primary-50 mb-10 max-w-2xl mx-auto">
+      Únete a miles de trabajadores que ya están mejorando su salud, energía y bienestar con ObraFit.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#" class="bg-white text-primary-600 px-10 py-5 rounded-full font-bold text-xl hover:bg-mint-50 transform hover:scale-105 transition-all duration-200 shadow-2xl">
+        <i class="fas fa-user-plus mr-2"></i>Crear mi Cuenta
+      </a>
+      <a href="#" class="bg-transparent border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-primary-600 transition-all duration-200">
+        <i class="fas fa-info-circle mr-2"></i>Conocer Más
+      </a>
+    </div>
+
+    <!-- Trust Badges -->
+    <div class="grid grid-cols-3 gap-6 mt-16 max-w-2xl mx-auto">
+      <div>
+        <div class="text-3xl font-bold mb-2">5,000+</div>
+        <div class="text-sm text-primary-100">Usuarios Activos</div>
+      </div>
+      <div>
+        <div class="text-3xl font-bold mb-2">4.9/5</div>
+        <div class="text-sm text-primary-100">Calificación</div>
+      </div>
+      <div>
+        <div class="text-3xl font-bold mb-2">100%</div>
+        <div class="text-sm text-primary-100">Gratis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section class="py-20 bg-warm-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-display font-bold text-warm-900 mb-4">
+        Lo Que Dicen Nuestros <span class="text-primary-600">Usuarios</span>
+      </h2>
+      <p class="text-xl text-warm-600">Historias reales de transformación y bienestar</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Testimonio 1 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div class="flex items-center mb-4">
+          <div class="bg-gradient-to-br from-primary-500 to-primary-600 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+            J
+          </div>
+          <div>
+            <h4 class="font-bold text-warm-900">Juan Pérez</h4>
+            <p class="text-sm text-warm-600">Operario de Construcción</p>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+        </div>
+        <p class="text-warm-700 italic">
+          "Desde que uso ObraFit, mi energía en el trabajo ha mejorado increíblemente. 
+          Las recetas son fáciles y económicas. ¡Muy recomendado!"
+        </p>
+      </div>
+
+      <!-- Testimonio 2 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div class="flex items-center mb-4">
+          <div class="bg-gradient-to-br from-mint-500 to-mint-600 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+            M
+          </div>
+          <div>
+            <h4 class="font-bold text-warm-900">Miguel Torres</h4>
+            <p class="text-sm text-warm-600">Maestro de Obra</p>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+        </div>
+        <p class="text-warm-700 italic">
+          "La calculadora nutricional es excelente. Ahora sé exactamente qué comer 
+          para mantenerme fuerte todo el día. Gracias ObraFit."
+        </p>
+      </div>
+
+      <!-- Testimonio 3 -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div class="flex items-center mb-4">
+          <div class="bg-gradient-to-br from-yellow-500 to-yellow-600 w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">
+            C
+          </div>
+          <div>
+            <h4 class="font-bold text-warm-900">Carlos Ramírez</h4>
+            <p class="text-sm text-warm-600">Soldador</p>
+          </div>
+        </div>
+        <div class="flex mb-4">
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+          <i class="fas fa-star text-yellow-400"></i>
+        </div>
+        <p class="text-warm-700 italic">
+          "El modo aprendizaje es muy entretenido. He aprendido mucho sobre nutrición 
+          de forma divertida. Mi familia también usa la plataforma."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

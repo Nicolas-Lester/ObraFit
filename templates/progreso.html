@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi Progreso - ObraFit{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-green-500 to-mint-500 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <i class="fas fa-chart-line text-6xl mb-4"></i>
+    <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">Mi Progreso</h1>
+    <p class="text-xl text-green-50">Monitorea tu evolución y logros</p>
+  </div>
+</section>
+
+<!-- Contenido Principal -->
+<section class="py-20 bg-warm-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-4">Próximamente</h2>
+      <p class="text-xl text-warm-600">Panel de progreso y estadísticas en desarrollo</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+        <i class="fas fa-trophy text-4xl text-yellow-500 mb-4"></i>
+        <h3 class="text-xl font-bold mb-2">Logros</h3>
+        <p class="text-warm-600">Desbloquea badges</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+        <i class="fas fa-calendar-check text-4xl text-green-500 mb-4"></i>
+        <h3 class="text-xl font-bold mb-2">Racha</h3>
+        <p class="text-warm-600">Días consecutivos</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-lg text-center">
+        <i class="fas fa-chart-bar text-4xl text-primary-500 mb-4"></i>
+        <h3 class="text-xl font-bold mb-2">Estadísticas</h3>
+        <p class="text-warm-600">Visualiza tu evolución</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

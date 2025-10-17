@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Recetas Saludables - ObraFit{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-br from-mint-600 to-primary-500 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <i class="fas fa-utensils text-6xl mb-4"></i>
+    <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">Recetas Saludables</h1>
+    <p class="text-xl text-mint-50">Más de 500 recetas nutritivas, fáciles y económicas</p>
+  </div>
+</section>
+
+<!-- Contenido Principal -->
+<section class="py-20 bg-warm-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-display font-bold text-warm-900 mb-4">Próximamente</h2>
+      <p class="text-xl text-warm-600">Estamos trabajando en traerte las mejores recetas</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl p-6 shadow-lg">
+        <i class="fas fa-egg text-4xl text-yellow-500 mb-4"></i>
+        <h3 class="text-xl font-bold mb-2">Desayunos Energéticos</h3>
+        <p class="text-warm-600">Comienza el día con energía</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-lg">
+        <i class="fas fa-hamburger text-4xl text-red-500 mb-4"></i>
+        <h3 class="text-xl font-bold mb-2">Almuerzos Completos</h3>
+        <p class="text-warm-600">Recetas balanceadas y nutritivas</p>
+      </div>
+      <div class="bg-white rounded-2xl p-6 shadow-lg">
+        <i class="fas fa-pizza-slice text-4xl text-mint-500 mb-4"></i>
+        <h3 class="text-xl font-bold mb-2">Cenas Ligeras</h3>
+        <p class="text-warm-600">Termina el día saludablemente</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
