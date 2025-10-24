@@ -3,77 +3,87 @@
 
 from recetas.models import CategoriaReceta, Receta, ContenidoEducativo, PreguntaQuiz, Logro
 
-print("🔄 Limpiando base de datos...")
-CategoriaReceta.objects.all().delete()
-Receta.objects.all().delete()
-ContenidoEducativo.objects.all().delete()
-PreguntaQuiz.objects.all().delete()
-Logro.objects.all().delete()
+print("🔄 Verificando base de datos...")
+print(f"   - Categorías existentes: {CategoriaReceta.objects.count()}")
+print(f"   - Recetas existentes: {Receta.objects.count()}")
+print(f"   - Contenido educativo existente: {ContenidoEducativo.objects.count()}")
+print(f"   - Preguntas existentes: {PreguntaQuiz.objects.count()}")
+print(f"   - Logros existentes: {Logro.objects.count()}")
 
-print("📁 Creando categorías...")
+print("\n📁 Creando categorías...")
 
-desayuno = CategoriaReceta.objects.create(
+desayuno, created = CategoriaReceta.objects.get_or_create(
     nombre="Desayunos Energéticos",
-    tipo_comida="desayuno",
-    icono="fa-egg",
-    color="yellow-500",
-    descripcion="Comienza el día con fuerza"
+    defaults={
+        'tipo_comida': "desayuno",
+        'icono': "fa-egg",
+        'color': "yellow-500",
+        'descripcion': "Comienza el día con fuerza"
+    }
 )
 
-almuerzo = CategoriaReceta.objects.create(
+almuerzo, created = CategoriaReceta.objects.get_or_create(
     nombre="Almuerzos Completos",
-    tipo_comida="almuerzo",
-    icono="fa-hamburger",
-    color="red-500",
-    descripcion="Comida pa' aguantar la pega"
+    defaults={
+        'tipo_comida': "almuerzo",
+        'icono': "fa-hamburger",
+        'color': "red-500",
+        'descripcion': "Comida pa' aguantar la pega"
+    }
 )
 
-cena = CategoriaReceta.objects.create(
+cena, created = CategoriaReceta.objects.get_or_create(
     nombre="Cenas Ligeras",
-    tipo_comida="cena",
-    icono="fa-pizza-slice",
-    color="mint-500",
-    descripcion="Termina el día bien alimentado"
+    defaults={
+        'tipo_comida': "cena",
+        'icono': "fa-pizza-slice",
+        'color': "mint-500",
+        'descripcion': "Termina el día bien alimentado"
+    }
 )
 
-colacion = CategoriaReceta.objects.create(
+colacion, created = CategoriaReceta.objects.get_or_create(
     nombre="Colaciones",
-    tipo_comida="snack",
-    icono="fa-cookie-bite",
-    color="orange-500",
-    descripcion="Pa' la once o entre comidas"
+    defaults={
+        'tipo_comida': "snack",
+        'icono': "fa-cookie-bite",
+        'color': "orange-500",
+        'descripcion': "Pa' la once o entre comidas"
+    }
 )
 
 print("🍳 Creando desayunos chilenos...")
 
-Receta.objects.create(
+Receta.objects.get_or_create(
     nombre="Huevos Revueltos con Pan Amasado",
-    descripcion_corta="Desayuno contundente para empezar la pega",
-    descripcion="El clásico chileno que te deja listo para la jornada. Pan amasado casero con huevos revueltos, simple pero llenador.",
-    categoria=desayuno,
-    calorias=420,
-    proteinas=22,
-    carbohidratos=48,
-    grasas=16,
-    tiempo_preparacion=15,
-    porciones=2,
-    dificultad="facil",
-    costo_aproximado=1500.00,
-    ingredientes="""4 huevos
+    defaults={
+        'descripcion_corta': "Desayuno contundente para empezar la pega",
+        'descripcion': "El clásico chileno que te deja listo para la jornada. Pan amasado casero con huevos revueltos, simple pero llenador.",
+        'categoria': desayuno,
+        'calorias': 420,
+        'proteinas': 22,
+        'carbohidratos': 48,
+        'grasas': 16,
+        'tiempo_preparacion': 15,
+        'porciones': 2,
+        'dificultad': "facil",
+        'costo_aproximado': 1500.00,
+        'ingredientes': """4 huevos
 2 panes amasados
 1 tomate
 1 cucharada de aceite
 Sal y merkén al gusto
 Perejil picado""",
-    instrucciones="""Pica el tomate en cubitos chicos
+        'instrucciones': """Pica el tomate en cubitos chicos
 Calienta el aceite en un sartén
 Bate los huevos con sal
 Echa el tomate al sartén y cocina 2 minutos
 Agrega los huevos y revuelve hasta que cuajen
 Calienta el pan amasado en el horno o sartén
 Sirve con merkén y perejil""",
-    tips="El pan amasado lo puedes comprar en la panadería de la esquina o hacerlo el domingo para toda la semana. Si sobra, lo guardas en el congelador.",
-    es_popular=True
+        'tips': "El pan amasado lo puedes comprar en la panadería de la esquina o hacerlo el domingo para toda la semana. Si sobra, lo guardas en el congelador.",
+        'es_popular': True
+    }
 )
 
 Receta.objects.create(
