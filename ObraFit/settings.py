@@ -73,15 +73,25 @@ WSGI_APPLICATION = 'ObraFit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Configuración para PostgreSQL con psycopg3
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-        'PASSWORD': 'your_password_here',
-        'LOCALHOST': 'localhost', 
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'obrafit_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Eternity',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
+# Configuración SQLite (comentada, para volver a usar si hay problemas)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -106,9 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
