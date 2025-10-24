@@ -82,6 +82,9 @@ DATABASES = {
         'PASSWORD': 'Eternity',
         'HOST': 'localhost',
         'PORT': '5432',
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
     }
 }
 

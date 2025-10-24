@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Script para poblar la base de datos con recetas chilenas para obreros
 # Ejecutar con: Get-Content poblar_db_chile.py | python manage.py shell
 
