@@ -1,0 +1,1 @@
+# Get-Content poblar_db_chile.py | python manage.py shell
