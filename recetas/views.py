@@ -142,3 +142,9 @@ def contacto(request):
     }
     return render(request, 'contacto.html', context)
 
+# Vista de juego interactivo
+def juego(request):
+    context = {
+        'titulo': 'Batalla Nutricional - Juego',
+    }
+    return render(request, 'juego.html', context)
