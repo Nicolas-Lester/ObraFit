@@ -10,7 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+# Configurar UTF-8 como encoding por defecto
+os.environ.setdefault('PYTHONIOENCODING', 'utf-8')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,12 +83,13 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'obrafit_db',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'Eternity',
         'HOST': 'localhost',
         'PORT': '5432',
         'OPTIONS': {
             'client_encoding': 'UTF8',
         },
+        'CONN_MAX_AGE': 600,
     }
 }
 
@@ -126,6 +131,10 @@ TIME_ZONE = 'America/Mexico_City'
 USE_I18N = True
 
 USE_TZ = True
+
+# Configuración adicional para UTF-8
+DEFAULT_CHARSET = 'utf-8'
+FILE_CHARSET = 'utf-8'
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,6 +1,17 @@
 # -*- coding: utf-8 -*-
 # Script para poblar la base de datos con recetas chilenas para obreros
 # Ejecutar con: Get-Content poblar_db_chile.py | python manage.py shell
+# O directamente: python poblar_db_chile.py
+
+import os
+import sys
+import django
+
+# Configurar Django si se ejecuta directamente
+if __name__ == '__main__':
+    os.environ['PYTHONIOENCODING'] = 'utf-8'
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ObraFit.settings')
+    django.setup()
 
 from recetas.models import CategoriaReceta, Receta, ContenidoEducativo, PreguntaQuiz, Logro
 

@@ -127,17 +127,40 @@ python manage.py migrate
 python manage.py collectstatic --noinput
 ```
 
-5. **Crear superusuario (opcional)**
+5. **Poblar la base de datos con recetas**
+
+**Windows (Recomendado):**
+```bash
+# Doble clic en el archivo:
+poblar_recetas.bat
+
+# O desde PowerShell:
+.\poblar_recetas.bat
+```
+
+**Alternativa manual (PowerShell):**
+```powershell
+$env:PYTHONIOENCODING='utf-8'; python poblar_db_chile.py
+```
+
+**Linux/Mac:**
+```bash
+PYTHONIOENCODING=utf-8 python poblar_db_chile.py
+```
+
+> ⚠️ **IMPORTANTE**: Siempre usar UTF-8 para que los acentos y ñ se vean correctamente.
+
+6. **Crear superusuario (opcional)**
 ```bash
 python manage.py createsuperuser
 ```
 
-6. **Ejecutar el servidor de desarrollo**
+7. **Ejecutar el servidor de desarrollo**
 ```bash
 python manage.py runserver
 ```
 
-7. **Acceder a la aplicación**
+8. **Acceder a la aplicación**
 ```
 http://localhost:8000
 ```
@@ -169,6 +192,10 @@ La aplicación está completamente optimizada para:
 ```python
 # settings.py
 
+# Configuración UTF-8 (IMPORTANTE para caracteres especiales)
+import os
+os.environ.setdefault('PYTHONIOENCODING', 'utf-8')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -182,7 +209,32 @@ INSTALLED_APPS = [
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Configuración para PostgreSQL con UTF-8
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
+    }
+}
+
+# Encoding
+DEFAULT_CHARSET = 'utf-8'
+FILE_CHARSET = 'utf-8'
 ```
+
+### ⚠️ Nota Importante sobre Encoding
+
+Este proyecto usa **UTF-8** para soportar correctamente caracteres especiales del español (á, é, í, ó, ú, ñ). 
+
+**Al poblar la base de datos:**
+- ✅ Usar `poblar_recetas.bat` (Windows)
+- ✅ O configurar `PYTHONIOENCODING=utf-8` manualmente
+- ❌ NO ejecutar directamente `python poblar_db_chile.py` sin la variable de entorno
+
+Si ves caracteres como `?` o `??`, significa que falta la configuración UTF-8.
 
 ## 🌐 Rutas Disponibles
 
