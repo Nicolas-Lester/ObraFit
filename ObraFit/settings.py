@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'obrafit_db',
         'USER': 'postgres',
-        'PASSWORD': 'Eternity',
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '5432',
         'OPTIONS': {
