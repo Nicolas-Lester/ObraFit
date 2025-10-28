@@ -1,1 +1,1 @@
-# Get-Content poblar_db_chile.py | python manage.py shell
+# $env:PYTHONIOENCODING='utf-8'; python poblar_db_chile.py
