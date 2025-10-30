@@ -314,26 +314,6 @@
   {% load static %}
   <script src="{% static 'js/scripts.js' %}"></script>
   {% block extra_scripts %}{% endblock %}
-  
-  <script>
-    // Mobile menu toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Navbar scroll effect
-    window.addEventListener('scroll', () => {
-      const navbar = document.getElementById('navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('shadow-lg');
-      } else {
-        navbar.classList.remove('shadow-lg');
-      }
-    });
-  </script>
 
 </body>
 </html>
