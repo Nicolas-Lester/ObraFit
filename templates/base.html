@@ -118,35 +118,66 @@
         </div>
 
         <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center space-x-1">
-          <a href="{% url 'home' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium">
+        <div class="hidden md:flex items-center space-x-2">
+          <a href="{% url 'home' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium whitespace-nowrap">
             <i class="fas fa-home mr-2"></i>Inicio
           </a>
-          <a href="{% url 'calculadora' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium">
+          <a href="{% url 'calculadora' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium whitespace-nowrap">
             <i class="fas fa-calculator mr-2"></i>Calculadora
           </a>
-          <a href="{% url 'recetas' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium">
+          <a href="{% url 'recetas' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium whitespace-nowrap">
             <i class="fas fa-utensils mr-2"></i>Recetas
           </a>
-          <a href="{% url 'aprendizaje' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium">
+          <a href="{% url 'aprendizaje' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium whitespace-nowrap">
             <i class="fas fa-graduation-cap mr-2"></i>Aprender
           </a>
-          <a href="{% url 'juego' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-yellow-50 hover:text-yellow-600 transition-all duration-200 font-medium">
+          <a href="{% url 'juego' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-yellow-50 hover:text-yellow-600 transition-all duration-200 font-medium whitespace-nowrap">
             <i class="fas fa-gamepad mr-2"></i>Jueguito
           </a>
-          <a href="{% url 'progreso' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium">
+          <a href="{% url 'progreso' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium whitespace-nowrap">
             <i class="fas fa-chart-line mr-2"></i>Progreso
           </a>
-          <a href="{% url 'contacto' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium">
+          <a href="{% url 'contacto' %}" class="nav-link px-4 py-2 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 font-medium whitespace-nowrap">
             <i class="fas fa-envelope mr-2"></i>Contacto
           </a>
         </div>
 
-        <!-- CTA Button -->
+        <!-- User Menu / Auth Buttons -->
         <div class="hidden md:block">
-          <a href="#" class="bg-gradient-to-r from-primary-500 to-mint-500 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200">
-            Comenzar
-          </a>
+          {% if user.is_authenticated %}
+            <!-- Usuario Logueado -->
+            <div class="flex items-center space-x-3">
+              <span class="text-warm-600 text-sm">¡Hola, <span class="font-semibold text-primary-600">{{ user.first_name|default:user.username }}</span>!</span>
+              <div class="relative group">
+                <button class="flex items-center space-x-2 bg-gradient-to-r from-primary-500 to-mint-500 text-white px-4 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-200">
+                  <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <span>Mi Cuenta</span>
+                  <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <!-- Dropdown Menu -->
+                <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-warm-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <a href="{% url 'usuarios:perfil' %}" class="block px-4 py-3 text-warm-700 hover:bg-primary-50 hover:text-primary-600 rounded-t-lg transition-colors">
+                    <i class="fas fa-user mr-2"></i>Mi Perfil
+                  </a>
+                  <a href="{% url 'progreso' %}" class="block px-4 py-3 text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-colors">
+                    <i class="fas fa-chart-line mr-2"></i>Mi Progreso
+                  </a>
+                  <div class="border-t border-warm-200"></div>
+                  <a href="{% url 'usuarios:logout' %}" class="block px-4 py-3 text-red-600 hover:bg-red-50 rounded-b-lg transition-colors">
+                    <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <!-- Botón de Login mejorado -->
+            <a href="{% url 'usuarios:login' %}" class="group flex items-center space-x-2 bg-gradient-to-r from-primary-500 to-mint-500 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+              <i class="fas fa-sign-in-alt group-hover:rotate-12 transition-transform duration-200"></i>
+              <span>Iniciar Sesión</span>
+            </a>
+          {% endif %}
         </div>
 
         <!-- Mobile Menu Button -->
@@ -159,6 +190,17 @@
     <!-- Mobile Menu -->
     <div class="md:hidden hidden bg-white border-t border-warm-200 animate-slide-down" id="mobile-menu">
       <div class="px-4 py-3 space-y-1">
+        {% if user.is_authenticated %}
+          <!-- Saludo al usuario -->
+          <div class="px-4 py-3 bg-gradient-to-r from-primary-50 to-mint-50 rounded-lg mb-2">
+            <p class="text-sm text-warm-600">¡Hola de nuevo!</p>
+            <p class="font-bold text-primary-600">{{ user.first_name|default:user.username }}</p>
+          </div>
+          <a href="{% url 'usuarios:perfil' %}" class="block px-4 py-3 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-colors duration-200">
+            <i class="fas fa-user mr-3"></i>Mi Perfil
+          </a>
+        {% endif %}
+        
         <a href="{% url 'home' %}" class="block px-4 py-3 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-colors duration-200">
           <i class="fas fa-home mr-3"></i>Inicio
         </a>
@@ -180,9 +222,16 @@
         <a href="{% url 'contacto' %}" class="block px-4 py-3 rounded-lg text-warm-700 hover:bg-primary-50 hover:text-primary-600 transition-colors duration-200">
           <i class="fas fa-envelope mr-3"></i>Contacto
         </a>
-        <a href="#" class="block w-full text-center bg-gradient-to-r from-primary-500 to-mint-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 mt-4">
-          Comenzar
-        </a>
+        
+        {% if user.is_authenticated %}
+          <a href="{% url 'usuarios:logout' %}" class="block w-full text-center bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600 transition-all duration-200 mt-4">
+            <i class="fas fa-sign-out-alt mr-2"></i>Cerrar Sesión
+          </a>
+        {% else %}
+          <a href="{% url 'usuarios:login' %}" class="block w-full text-center bg-gradient-to-r from-primary-500 to-mint-500 text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-200 mt-4">
+            <i class="fas fa-sign-in-alt mr-2"></i>Iniciar Sesión
+          </a>
+        {% endif %}
       </div>
     </div>
   </nav>

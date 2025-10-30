@@ -17,88 +17,145 @@
       <p class="text-warm-600">Pon a prueba tus conocimientos</p>
     </div>
 
-    <!-- Progreso del Quiz -->
-    <div class="bg-white rounded-2xl p-6 shadow-lg mb-6">
-      <div class="flex items-center justify-between mb-2">
-        <span class="text-sm font-semibold text-warm-600">Pregunta <span id="pregunta-actual">1</span> de <span id="total-preguntas">{{ preguntas|length }}</span></span>
-        <span class="text-sm font-semibold text-primary-600">Puntaje: <span id="puntaje">0</span></span>
-      </div>
-      <div class="w-full bg-warm-200 rounded-full h-3">
-        <div id="barra-progreso" class="bg-primary-500 h-3 rounded-full transition-all duration-300" style="width: 0%"></div>
-      </div>
-    </div>
-
-    <!-- Contenedor de Preguntas -->
-    <div id="quiz-container">
+    <!-- Formulario del Quiz -->
+    <form method="POST" action="{% url 'quiz' %}">
+      {% csrf_token %}
+      
       {% for pregunta in preguntas %}
-      <div class="pregunta-card {% if forloop.first %}active{% endif %}" data-pregunta="{{ forloop.counter }}" data-respuesta="{{ pregunta.respuesta_correcta }}">
-        <div class="bg-white rounded-2xl p-8 shadow-xl">
-          <div class="mb-6">
-            <span class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">
-              {{ pregunta.categoria }}
-            </span>
-            <h2 class="text-2xl font-bold text-warm-900 mb-6">{{ pregunta.pregunta }}</h2>
-          </div>
+      <div class="bg-white rounded-2xl p-8 shadow-xl mb-6">
+        <div class="mb-6">
+          <span class="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">
+            Pregunta {{ forloop.counter }} de {{ preguntas|length }}
+          </span>
+          <h2 class="text-2xl font-bold text-warm-900 mb-6">{{ pregunta.pregunta }}</h2>
+        </div>
 
-          <div class="space-y-4">
-            <button class="opcion-btn" data-opcion="a" onclick="seleccionarOpcion(this, '{{ pregunta.respuesta_correcta }}')">
+        <div class="space-y-3">
+          <label class="opcion-radio-label">
+            <input type="radio" name="pregunta_{{ pregunta.id }}" value="a" class="sr-only" required>
+            <div class="opcion-radio-btn">
               <span class="opcion-letra">A</span>
               <span class="opcion-texto">{{ pregunta.opcion_a }}</span>
-              <i class="fas fa-check opcion-icon"></i>
-            </button>
-            
-            <button class="opcion-btn" data-opcion="b" onclick="seleccionarOpcion(this, '{{ pregunta.respuesta_correcta }}')">
+              <i class="fas fa-check-circle opcion-check"></i>
+            </div>
+          </label>
+          
+          <label class="opcion-radio-label">
+            <input type="radio" name="pregunta_{{ pregunta.id }}" value="b" class="sr-only" required>
+            <div class="opcion-radio-btn">
               <span class="opcion-letra">B</span>
               <span class="opcion-texto">{{ pregunta.opcion_b }}</span>
-              <i class="fas fa-check opcion-icon"></i>
-            </button>
-            
-            <button class="opcion-btn" data-opcion="c" onclick="seleccionarOpcion(this, '{{ pregunta.respuesta_correcta }}')">
+              <i class="fas fa-check-circle opcion-check"></i>
+            </div>
+          </label>
+          
+          <label class="opcion-radio-label">
+            <input type="radio" name="pregunta_{{ pregunta.id }}" value="c" class="sr-only" required>
+            <div class="opcion-radio-btn">
               <span class="opcion-letra">C</span>
               <span class="opcion-texto">{{ pregunta.opcion_c }}</span>
-              <i class="fas fa-check opcion-icon"></i>
-            </button>
-            
-            <button class="opcion-btn" data-opcion="d" onclick="seleccionarOpcion(this, '{{ pregunta.respuesta_correcta }}')">
+              <i class="fas fa-check-circle opcion-check"></i>
+            </div>
+          </label>
+          
+          <label class="opcion-radio-label">
+            <input type="radio" name="pregunta_{{ pregunta.id }}" value="d" class="sr-only" required>
+            <div class="opcion-radio-btn">
               <span class="opcion-letra">D</span>
               <span class="opcion-texto">{{ pregunta.opcion_d }}</span>
-              <i class="fas fa-check opcion-icon"></i>
-            </button>
-          </div>
-
-          <!-- Explicación (oculta inicialmente) -->
-          <div class="explicacion-container hidden mt-6 p-6 bg-blue-50 border-l-4 border-blue-500 rounded-lg">
-            <h4 class="font-bold text-blue-900 mb-2">
-              <i class="fas fa-info-circle mr-2"></i>Explicación
-            </h4>
-            <p class="text-blue-800">{{ pregunta.explicacion }}</p>
-          </div>
-
-          <!-- Botón siguiente -->
-          <div class="mt-6 flex justify-end">
-            <button onclick="siguientePregunta()" class="btn-siguiente hidden btn-primary px-8 py-3 rounded-xl">
-              Siguiente <i class="fas fa-arrow-right ml-2"></i>
-            </button>
-          </div>
+              <i class="fas fa-check-circle opcion-check"></i>
+            </div>
+          </label>
         </div>
       </div>
       {% endfor %}
-    </div>
 
-    <!-- Resultados finales (oculto inicialmente) -->
-    <div id="resultados-container" class="hidden">
-      <div class="bg-white rounded-2xl p-8 shadow-xl text-center">
-        <div class="w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center mx-auto mb-6">
-          <i class="fas fa-trophy text-4xl text-white"></i>
-        </div>
-        <h2 class="text-3xl font-bold text-warm-900 mb-4">¡Quiz Completado!</h2>
-        <div class="text-6xl font-bold text-primary-500 mb-4">
-          <span id="puntaje-final">0</span>/<span id="total-final">{{ preguntas|length }}</span>
-        </div>
-        <p id="mensaje-resultado" class="text-xl text-warm-600 mb-8"></p>
-        
-        <div class="grid grid-cols-3 gap-4 max-w-md mx-auto mb-8">
-          <div class="bg-green-50 rounded-xl p-4">
+      <!-- Botón de envío -->
+      <div class="text-center">
+        <button type="submit" class="bg-gradient-to-r from-primary-500 to-mint-500 text-white px-12 py-4 rounded-full font-bold text-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200">
+          <i class="fas fa-paper-plane mr-2"></i>Enviar Quiz
+        </button>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+<style>
+.opcion-radio-label {
+  display: block;
+  cursor: pointer;
+}
+
+.opcion-radio-btn {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #e7e5e4;
+  border-radius: 0.75rem;
+  transition: all 0.2s;
+  background: white;
+}
+
+.opcion-radio-btn:hover {
+  border-color: #0ea5e9;
+  background: #f0f9ff;
+}
+
+.opcion-radio-label input:checked + .opcion-radio-btn {
+  border-color: #0ea5e9;
+  background: #e0f2fe;
+}
+
+.opcion-letra {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f5f4;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  color: #78716c;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.opcion-radio-label input:checked + .opcion-radio-btn .opcion-letra {
+  background: #0ea5e9;
+  color: white;
+}
+
+.opcion-texto {
+  flex: 1;
+  color: #1c1917;
+}
+
+.opcion-check {
+  color: #0ea5e9;
+  opacity: 0;
+  transition: opacity 0.2s;
+  margin-left: 1rem;
+}
+
+.opcion-radio-label input:checked + .opcion-radio-btn .opcion-check {
+  opacity: 1;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+</style>
+
+{% endblock %}
             <div class="text-3xl font-bold text-green-600" id="correctas-final">0</div>
             <div class="text-sm text-green-700">Correctas</div>
           </div>
