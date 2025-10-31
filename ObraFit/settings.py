@@ -36,6 +36,12 @@ ALLOWED_HOSTS = [
     '.ngrok-free.app',  # Permite cualquier subdominio de ngrok
 ]
 
+# Configuración CSRF para ngrok
+CSRF_TRUSTED_ORIGINS = [
+    'https://a57f0d7b81cf.ngrok-free.app',
+    'https://*.ngrok-free.app',  # Permite cualquier subdominio de ngrok
+]
+
 
 # Application definition
 
