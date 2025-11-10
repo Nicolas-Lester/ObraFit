@@ -248,5 +248,21 @@
 {% endblock %}
 
 {% block extra_scripts %}
-<!-- JavaScript eliminado - ahora el cálculo se hace en el servidor -->
+<script>
+  // Auto-scroll a resultados cuando se muestran (especialmente importante en móvil)
+  {% if resultado %}
+  document.addEventListener('DOMContentLoaded', function() {
+    const resultados = document.getElementById('resultados');
+    if (resultados) {
+      // Pequeño delay para asegurar que la página cargó completamente
+      setTimeout(function() {
+        resultados.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }, 300);
+    }
+  });
+  {% endif %}
+</script>
 {% endblock %}
