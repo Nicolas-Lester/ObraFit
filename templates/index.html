@@ -23,17 +23,8 @@
         </div>
         
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
-          Alimentación <span class="text-mint-200">Inteligente</span>
+          Alimentación <span class="text-mint-200">Saludable</span>
         </h1>
-
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#comenzar" class="bg-white text-primary-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-mint-50 transform hover:scale-105 transition-all duration-200 shadow-xl text-center">
-            <i class="fas fa-rocket mr-2"></i>Comenzar Ahora
-          </a>
-          <a href="#como-funciona" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary-600 transition-all duration-200 text-center">
-            <i class="fas fa-play-circle mr-2"></i>Cómo Funciona
-          </a>
-        </div>
       </div>
 
       <!-- Imagen Ilustrativa -->
@@ -187,6 +178,12 @@
       Únete a miles de trabajadores que ya están mejorando su salud, energía y bienestar con ObraFit.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{% url 'calculadora' %}" class="group bg-white text-primary-600 px-10 py-5 rounded-full font-bold text-xl hover:bg-mint-50 transform hover:scale-105 transition-all duration-200 shadow-2xl inline-flex items-center justify-center">
+        <i class="fas fa-rocket mr-2 group-hover:animate-bounce"></i>Comenzar Ahora
+      </a>
+      <a href="{% url 'acerca' %}" class="group bg-transparent border-2 border-white text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-white hover:text-primary-600 transition-all duration-200 inline-flex items-center justify-center">
+        <i class="fas fa-info-circle mr-2"></i>Conocer Más
+      </a>
     </div>
   </div>
 </section>
