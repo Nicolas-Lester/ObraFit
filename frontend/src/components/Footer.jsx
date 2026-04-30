@@ -25,7 +25,7 @@ export default function Footer() {
                 { to: '/recetas', label: 'Recetas' },
                 { to: '/aprendizaje', label: 'Aprender' },
                 { to: '/quiz', label: 'Quiz' },
-                { to: '/juego', label: '🎮 Juego' },
+                { to: '/juego', label: '🎮 Minijuego' },
                 { to: '/acerca', label: 'Acerca de' },
               ].map(({ to, label }) => (
                 <li key={to}>
