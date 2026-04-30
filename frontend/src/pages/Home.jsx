@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 const features = [
-  { icon: '🧮', title: 'Calculadora Nutricional', desc: 'Calcula tu TMB y calorías diarias con la fórmula Harris-Benedict.', link: '/calculadora' },
-  { icon: '🍽️', title: 'Recetas Saludables', desc: 'Más de 500 recetas chilenas categorizadas y con valores nutricionales.', link: '/recetas' },
-  { icon: '📚', title: 'Modo Aprendizaje', desc: 'Artículos y tips de nutrición para mejorar tus hábitos.', link: '/aprendizaje' },
-  { icon: '🎯', title: 'Quiz Interactivo', desc: 'Pon a prueba tus conocimientos y gana puntos.', link: '/quiz' },
+  { icon: '🧮', title: 'Calculadora', desc: 'Calcula tus calorías diarias con la fórmula Harris-Benedict.', link: '/calculadora', color: 'from-blue-500 to-sky-400' },
+  { icon: '🍽️', title: 'Recetas', desc: '+500 recetas chilenas con valores nutricionales completos.', link: '/recetas', color: 'from-orange-400 to-amber-400' },
+  { icon: '📚', title: 'Aprender', desc: 'Artículos y tips de nutrición para mejorar tus hábitos.', link: '/aprendizaje', color: 'from-mint-500 to-teal-500' },
+  { icon: '🎯', title: 'Quiz', desc: 'Pon a prueba tus conocimientos y gana puntos.', link: '/quiz', color: 'from-violet-500 to-purple-500' },
 ]
 
 export default function Home() {
