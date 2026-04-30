@@ -120,8 +120,7 @@ El proxy de Vite reenvía automáticamente `/api/` → `http://localhost:8000`.
 
 ```bash
 # Con el entorno virtual activado, desde la carpeta backend:
-python manage.py shell < ../scripts/poblar_db.py
-python manage.py shell < ../scripts/crear_logros.py
+python scripts/poblar_db_chile.py
 ```
 
 ---

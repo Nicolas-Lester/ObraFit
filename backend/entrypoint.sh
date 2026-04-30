@@ -29,6 +29,20 @@ EOF
 echo "🔄 Aplicando migraciones..."
 python manage.py migrate --noinput
 
+echo "🌱 Poblando base de datos (solo si está vacía)..."
+python << 'EOF'
+import django, os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.development")
+django.setup()
+from apps.recetas.models import Receta
+if Receta.objects.count() == 0:
+    import runpy
+    runpy.run_path("/app/scripts/poblar_db_chile.py")
+    print("✅ Base de datos poblada con datos de ejemplo.")
+else:
+    print("ℹ️  La base de datos ya tiene datos, se omite la población.")
+EOF
+
 echo "📦 Recolectando archivos estáticos..."
 python manage.py collectstatic --noinput
 
