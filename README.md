@@ -23,7 +23,11 @@ ObraFit/
 
 ---
 
-## Inicio rápido con Docker
+## Modo 1: Probar la aplicación (Docker)
+
+> Usa este modo cuando quieras ver la aplicación funcionando completa, sin instalar Python ni Node en tu máquina.
+
+**Requisitos:** Docker Desktop instalado y corriendo.
 
 ```bash
 # 1. Clonar el repositorio
@@ -31,14 +35,103 @@ git clone https://github.com/Nicolas-Lester/ObraFit.git
 cd ObraFit
 
 # 2. Crear el archivo de entorno
-cp .env.example .env
-# Edita .env con tus valores
+cp .env.example .env   # En Windows: Copy-Item .env.example .env
+# Edita .env con tus valores (al menos SECRET_KEY y POSTGRES_PASSWORD)
 
 # 3. Levantar todos los servicios
 docker-compose up --build
 ```
 
-La aplicación estará disponible en **http://localhost**.
+**URLs disponibles:**
+
+| URL | Descripción |
+|-----|-------------|
+| `http://localhost` | Frontend React (aplicación completa) |
+| `http://localhost/api/` | API REST Django |
+| `http://localhost/admin/` | Panel de administración Django |
+
+> Todos los servicios corren detrás de Nginx en el puerto 80. El backend **no** tiene puerto expuesto directamente.
+
+Para crear un superusuario (acceso al admin):
+```bash
+docker-compose exec backend python manage.py createsuperuser
+```
+
+Para detener:
+```bash
+docker-compose down          # detiene los contenedores
+docker-compose down -v       # detiene y borra los datos
+```
+
+---
+
+## Modo 2: Desarrollo local (backend y frontend por separado)
+
+> Usa este modo cuando estés programando activamente. Obtienes hot-reload en el frontend y el servidor de Django con recarga automática.
+
+**Requisitos:** Python 3.12+, Node 20+, Docker Desktop (solo para la base de datos).
+
+### Paso 1 — Levantar solo la base de datos
+
+```bash
+docker-compose up db -d
+```
+
+### Paso 2 — Backend Django (Terminal 1)
+
+```bash
+cd backend
+
+# Primera vez: crear entorno virtual
+python -m venv venv
+.\venv\Scripts\activate        # Windows
+# source venv/bin/activate     # Linux/Mac
+
+pip install -r requirements.txt
+
+# Variables de entorno necesarias
+$env:DJANGO_SETTINGS_MODULE = "config.settings.development"
+$env:POSTGRES_HOST = "localhost"      # importante: no usar "db"
+$env:POSTGRES_PASSWORD = "obrafit_pass"
+
+python manage.py migrate
+python manage.py runserver
+```
+
+Backend disponible en:
+
+| URL | Descripción |
+|-----|-------------|
+| `http://localhost:8000/api/` | API REST Django |
+| `http://localhost:8000/admin/` | Panel de administración Django |
+
+### Paso 3 — Frontend React (Terminal 2)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend disponible en `http://localhost:5173`  
+El proxy de Vite reenvía automáticamente `/api/` → `http://localhost:8000`.
+
+### (Opcional) Poblar la base de datos con datos de prueba
+
+```bash
+# Con el entorno virtual activado, desde la carpeta backend:
+python manage.py shell < ../scripts/poblar_db.py
+python manage.py shell < ../scripts/crear_logros.py
+```
+
+---
+
+## Resumen de puertos
+
+| Modo | Frontend | Backend API | Admin Django |
+|------|----------|-------------|--------------|
+| Docker (Modo 1) | `localhost` (80) | `localhost/api/` | `localhost/admin/` |
+| Desarrollo local (Modo 2) | `localhost:5173` | `localhost:8000/api/` | `localhost:8000/admin/` |
 
 ---
 
@@ -51,7 +144,7 @@ La aplicación estará disponible en **http://localhost**.
 | `POSTGRES_DB` | Nombre de la BD | `obrafit_db` |
 | `POSTGRES_USER` | Usuario PostgreSQL | `obrafit_user` |
 | `POSTGRES_PASSWORD` | Contraseña | — (requerida) |
-| `POSTGRES_HOST` | Host PostgreSQL | `db` |
+| `POSTGRES_HOST` | Host PostgreSQL | `db` (Docker) / `localhost` (local) |
 | `POSTGRES_PORT` | Puerto | `5432` |
 | `CORS_ALLOWED_ORIGINS` | Orígenes CORS en producción | — |
 
@@ -91,38 +184,6 @@ La aplicación estará disponible en **http://localhost**.
 | DELETE | `/api/usuarios/favoritos/<id>/` | Eliminar favorito |
 | GET | `/api/usuarios/progreso/` | Progreso de aprendizaje |
 | GET | `/api/usuarios/logros/` | Logros del usuario |
-
----
-
-## Desarrollo local (sin Docker)
-
-### Backend
-
-```bash
-cd backend
-python -m venv .venv
-.venv\Scripts\activate       # Windows
-# source .venv/bin/activate  # Linux/Mac
-
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-### Poblar base de datos
-
-```bash
-python backend/scripts/poblar_db.py
-python backend/scripts/crear_logros.py
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev   # http://localhost:5173
-```
 
 ---
 
