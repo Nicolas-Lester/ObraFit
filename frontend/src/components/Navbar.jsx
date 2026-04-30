@@ -19,7 +19,7 @@ export default function Navbar() {
     { to: '/recetas', label: 'Recetas' },
     { to: '/aprendizaje', label: 'Aprender' },
     { to: '/quiz', label: 'Quiz' },
-    { to: '/juego', label: '🎮 Juego' },
+    { to: '/juego', label: '🎮 Minijuego' },
   ]
 
   return (
