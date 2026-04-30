@@ -48,40 +48,49 @@ export default function Quiz() {
 
   if (resultado) {
     const pct = Math.round((resultado.correctas / resultado.total) * 100)
+    const emoji = pct >= 70 ? '🏆' : pct >= 50 ? '💪' : '📖'
+    const msg = pct >= 70 ? '¡Excelente resultado!' : pct >= 50 ? '¡Buen trabajo!' : 'Sigue aprendiendo y vuelve a intentarlo.'
     return (
-      <div className="max-w-xl mx-auto px-4 py-16 text-center animate-fade-in">
-        <div className="text-6xl mb-4">{pct >= 70 ? '🏆' : pct >= 50 ? '💪' : '📖'}</div>
-        <h2 className="font-display text-2xl font-bold text-warm-900 mb-2">
-          {resultado.correctas} / {resultado.total} correctas
-        </h2>
-        <div className="text-5xl font-extrabold text-primary-600 mb-1">{pct}%</div>
-        <p className="text-warm-500 mb-6">
-          {pct >= 70 ? '¡Excelente resultado!' : pct >= 50 ? '¡Buen trabajo!' : 'Sigue aprendiendo y vuelve a intentarlo.'}
-        </p>
+      <div className="max-w-md mx-auto px-4 py-16 text-center animate-fade-in">
+        <div className="bg-white rounded-3xl border border-gray-100 shadow-lg p-8">
+          <div className="text-7xl mb-4">{emoji}</div>
+          <h2 className="font-display text-2xl font-extrabold text-warm-900 mb-1">{msg}</h2>
+          <div className="text-5xl font-extrabold bg-gradient-to-r from-primary-600 to-mint-500 bg-clip-text text-transparent my-3">{pct}%</div>
+          <p className="text-warm-400 mb-1 text-sm">{resultado.correctas} de {resultado.total} correctas</p>
 
-        {resultado.puntos_ganados > 0 && (
-          <div className="bg-yellow-50 border border-yellow-200 rounded-xl px-6 py-3 mb-6 text-yellow-700 font-medium">
-            🌟 +{resultado.puntos_ganados} puntos ganados
+          {/* Barra resultado */}
+          <div className="w-full bg-gray-100 rounded-full h-3 my-4 overflow-hidden">
+            <div className={`h-3 rounded-full transition-all duration-700 ${pct >= 70 ? 'bg-gradient-to-r from-emerald-400 to-mint-500' : pct >= 50 ? 'bg-gradient-to-r from-amber-400 to-yellow-400' : 'bg-gradient-to-r from-red-400 to-orange-400'}`}
+              style={{ width: `${pct}%` }} />
           </div>
-        )}
 
-        {resultado.logros_desbloqueados?.length > 0 && (
-          <div className="bg-primary-50 border border-primary-200 rounded-xl px-6 py-4 mb-6 text-left">
-            <p className="font-semibold text-primary-700 mb-2">🎯 Logros desbloqueados:</p>
-            {resultado.logros_desbloqueados.map((l) => (
-              <div key={l} className="text-sm text-primary-600">• {l}</div>
-            ))}
+          {resultado.puntos_ganados > 0 && (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-xl px-5 py-3 mb-4 text-yellow-700 font-semibold text-sm">
+              🌟 +{resultado.puntos_ganados} puntos ganados
+            </div>
+          )}
+
+          {resultado.logros_desbloqueados?.length > 0 && (
+            <div className="bg-primary-50 border border-primary-200 rounded-xl px-5 py-4 mb-4 text-left">
+              <p className="font-bold text-primary-700 mb-2 text-sm">🎯 Logros desbloqueados:</p>
+              {resultado.logros_desbloqueados.map((l) => (
+                <div key={l} className="text-sm text-primary-600">• {l}</div>
+              ))}
+            </div>
+          )}
+
+          <div className="flex gap-3 justify-center mt-4">
+            <button onClick={() => {
+              setResultado(null); setRespuestas({}); setCurrent(0); setLoading(true)
+              recetasService.getQuizPreguntas().then((d) => setPreguntas(d.results || d)).finally(() => setLoading(false))
+            }} className="btn-primary text-sm px-6 py-2.5">
+              Intentar otra vez
+            </button>
+            <button onClick={() => navigate('/aprendizaje')}
+              className="px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-warm-600 font-semibold text-sm hover:border-primary-300 transition-all">
+              Seguir aprendiendo
+            </button>
           </div>
-        )}
-
-        <div className="flex gap-3 justify-center">
-          <button onClick={() => { setResultado(null); setRespuestas({}); setCurrent(0); setLoading(true); recetasService.getQuizPreguntas().then((d) => setPreguntas(d.results || d)).finally(() => setLoading(false)) }}
-            className="btn-primary">
-            Intentar otra vez
-          </button>
-          <button onClick={() => navigate('/aprendizaje')} className="btn-secondary">
-            Seguir aprendiendo
-          </button>
         </div>
       </div>
     )
@@ -90,36 +99,45 @@ export default function Quiz() {
   if (preguntas.length === 0) {
     return (
       <div className="max-w-xl mx-auto px-4 py-20 text-center text-warm-500">
-        <i className="fas fa-question-circle text-4xl text-warm-200 block mb-3" />
-        No hay preguntas disponibles aún.
+        <div className="text-5xl mb-4 opacity-30">❓</div>
+        <p className="text-warm-500">No hay preguntas disponibles aún.</p>
       </div>
     )
   }
 
   const pregunta = preguntas[current]
   const totalRespondidas = Object.keys(respuestas).length
+  const progPct = Math.round((totalRespondidas / preguntas.length) * 100)
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in">
+      {/* Header */}
       <div className="text-center mb-6">
-        <div className="text-4xl mb-2">🎯</div>
-        <h1 className="font-display text-2xl font-bold text-warm-900">Quiz Nutricional</h1>
-        <p className="text-warm-500 text-sm mt-1">{totalRespondidas} de {preguntas.length} respondidas</p>
+        <span className="inline-block bg-primary-50 text-primary-600 font-bold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider mb-3">
+          🎯 Quiz Nutricional
+        </span>
+        <h1 className="font-display text-2xl font-extrabold text-warm-900">Pon a prueba tu saber</h1>
+        <p className="text-warm-400 text-sm mt-1">{totalRespondidas} de {preguntas.length} respondidas</p>
       </div>
 
       {/* Barra de progreso */}
-      <div className="w-full bg-warm-100 rounded-full h-2 mb-6">
+      <div className="w-full bg-warm-100 rounded-full h-2.5 mb-6 overflow-hidden">
         <div
-          className="bg-primary-500 h-2 rounded-full transition-all duration-300"
-          style={{ width: `${(totalRespondidas / preguntas.length) * 100}%` }}
+          className="bg-gradient-to-r from-primary-500 to-mint-500 h-2.5 rounded-full transition-all duration-500"
+          style={{ width: `${progPct}%` }}
         />
       </div>
 
-      <div className="card">
-        <p className="text-xs text-warm-400 mb-2">Pregunta {current + 1} de {preguntas.length}</p>
-        <h2 className="font-semibold text-warm-900 mb-5 leading-relaxed">{pregunta.pregunta}</h2>
+      {/* Card pregunta */}
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-5">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="bg-primary-100 text-primary-600 font-bold text-xs px-2.5 py-1 rounded-lg">
+            {current + 1} / {preguntas.length}
+          </span>
+        </div>
+        <h2 className="font-display font-bold text-warm-900 text-lg mb-5 leading-relaxed">{pregunta.pregunta}</h2>
 
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {['a', 'b', 'c', 'd'].map((op) => {
             const texto = pregunta[`opcion_${op}`]
             if (!texto) return null
@@ -128,13 +146,17 @@ export default function Quiz() {
               <button
                 key={op}
                 onClick={() => handleRespuesta(pregunta.id, op)}
-                className={`w-full text-left px-4 py-3 rounded-xl border-2 text-sm font-medium transition-all ${
+                className={`w-full text-left px-4 py-3.5 rounded-xl border-2 text-sm font-medium transition-all duration-150 ${
                   seleccionada
-                    ? 'border-primary-500 bg-primary-50 text-primary-700'
-                    : 'border-warm-200 text-warm-700 hover:border-primary-300'
+                    ? 'border-primary-500 bg-primary-50 text-primary-700 shadow-sm'
+                    : 'border-gray-100 bg-gray-50 text-warm-700 hover:border-primary-300 hover:bg-primary-50/30'
                 }`}
               >
-                <span className="font-bold mr-2 text-warm-400">{op.toUpperCase()}.</span>
+                <span className={`inline-block w-6 h-6 text-xs font-extrabold rounded-md mr-3 text-center leading-6 ${
+                  seleccionada ? 'bg-primary-500 text-white' : 'bg-gray-200 text-warm-500'
+                }`}>
+                  {op.toUpperCase()}
+                </span>
                 {texto}
               </button>
             )
@@ -142,21 +164,22 @@ export default function Quiz() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between mt-5">
-        <button onClick={handleAnterior} disabled={current === 0} className="btn-secondary disabled:opacity-40">
-          <i className="fas fa-arrow-left mr-1.5" /> Anterior
+      {/* Navegación */}
+      <div className="flex items-center justify-between">
+        <button onClick={handleAnterior} disabled={current === 0}
+          className="flex items-center gap-1.5 px-5 py-2.5 rounded-xl border border-gray-200 bg-white text-warm-600 font-semibold text-sm hover:border-primary-300 hover:text-primary-600 transition-all disabled:opacity-40 disabled:cursor-not-allowed">
+          ← Anterior
         </button>
         {current < preguntas.length - 1 ? (
-          <button onClick={handleSiguiente} className="btn-primary">
-            Siguiente <i className="fas fa-arrow-right ml-1.5" />
+          <button onClick={handleSiguiente} className="btn-primary px-6 py-2.5 text-sm">
+            Siguiente →
           </button>
         ) : (
           <button
             onClick={handleEnviar}
             disabled={enviando || totalRespondidas < preguntas.length}
-            className="btn-mint disabled:opacity-50"
-          >
-            {enviando ? <Spinner size="sm" /> : 'Enviar quiz'}
+            className="bg-gradient-to-r from-mint-500 to-primary-500 text-white font-bold px-6 py-2.5 rounded-xl hover:from-mint-600 hover:to-primary-600 transition-all shadow-md disabled:opacity-50 disabled:cursor-not-allowed text-sm active:scale-95">
+            {enviando ? '⏳ Enviando…' : '✅ Enviar quiz'}
           </button>
         )}
       </div>
