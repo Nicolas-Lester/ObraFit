@@ -3,6 +3,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import { recetasService } from '../services/recetasService'
 import Spinner from '../components/Spinner'
 
+const FA_MAP = {
+  'fa-hard-hat': '👷', 'fa-tint': '💧', 'fa-drumstick-bite': '🍗',
+  'fa-egg': '🥚', 'fa-hamburger': '🍔', 'fa-pizza-slice': '🍕',
+  'fa-cookie-bite': '🍪', 'fa-apple-alt': '🍎', 'fa-carrot': '🥕',
+  'fa-fish': '🐟', 'fa-bread-slice': '🍞', 'fa-seedling': '🌱',
+  'fa-running': '🏃', 'fa-dumbbell': '💪', 'fa-heart': '❤️',
+  'fa-brain': '🧠', 'fa-utensils': '🍽️', 'fa-weight': '⚖️',
+  'fa-leaf': '🌿', 'fa-fire': '🔥', 'fa-bolt': '⚡',
+  'fa-sun': '☀️', 'fa-moon': '🌙', 'fa-water': '💧',
+}
+const getIcon = (icono) => {
+  if (!icono) return '📄'
+  if (icono.startsWith('fa-')) return FA_MAP[icono] || '📖'
+  return icono
+}
+
 export default function Aprendizaje() {
   const navigate = useNavigate()
   const [articulos, setArticulos] = useState([])
@@ -54,7 +70,7 @@ export default function Aprendizaje() {
                 className="group bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1.5 transition-all duration-200 cursor-pointer"
               >
                 <div className="h-28 bg-gradient-to-br from-primary-100 to-mint-100 flex items-center justify-center text-5xl">
-                  {art.icono || '📄'}
+                  {getIcon(art.icono)}
                 </div>
                 <div className="p-5">
                   <h3 className="font-display font-bold text-warm-900 mb-1.5 group-hover:text-primary-600 transition-colors leading-snug">{art.titulo}</h3>
