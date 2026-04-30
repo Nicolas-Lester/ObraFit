@@ -43,22 +43,26 @@ export default function Aprendizaje() {
       {/* Artículos */}
       {articulos.length > 0 && (
         <section className="mb-10">
-          <h2 className="font-display text-xl font-semibold text-warm-900 mb-5">
-            <i className="fas fa-book text-primary-400 mr-2" /> Artículos
+          <h2 className="font-display text-xl font-bold text-warm-900 mb-5 flex items-center gap-2">
+            <span className="text-2xl">📖</span> Artículos
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {articulos.map((art) => (
               <div
                 key={art.id}
                 onClick={() => navigate(`/aprendizaje/${art.id}`)}
-                className="card cursor-pointer hover:-translate-y-0.5 transition-transform"
+                className="group bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1.5 transition-all duration-200 cursor-pointer"
               >
-                <div className="text-3xl mb-3"><i className={`fas ${art.icono}`} /></div>
-                <h3 className="font-display font-semibold text-warm-900 mb-2">{art.titulo}</h3>
-                <p className="text-sm text-warm-500 line-clamp-3 mb-3">{art.descripcion}</p>
-                <div className="flex items-center justify-between text-xs text-warm-400">
-                  <span><i className="fas fa-clock mr-1" />{art.duracion_lectura} min</span>
-                  {art.es_destacado && <span className="badge bg-yellow-50 text-yellow-600">Destacado</span>}
+                <div className="h-28 bg-gradient-to-br from-primary-100 to-mint-100 flex items-center justify-center text-5xl">
+                  {art.icono || '📄'}
+                </div>
+                <div className="p-5">
+                  <h3 className="font-display font-bold text-warm-900 mb-1.5 group-hover:text-primary-600 transition-colors leading-snug">{art.titulo}</h3>
+                  <p className="text-sm text-warm-500 line-clamp-2 mb-3 leading-relaxed">{art.descripcion}</p>
+                  <div className="flex items-center justify-between text-xs text-warm-400">
+                    <span>⏱ {art.duracion_lectura} min de lectura</span>
+                    {art.es_destacado && <span className="badge bg-yellow-50 text-yellow-600 border border-yellow-100">⭐ Destacado</span>}
+                  </div>
                 </div>
               </div>
             ))}
@@ -69,14 +73,16 @@ export default function Aprendizaje() {
       {/* Tips */}
       {tips.length > 0 && (
         <section>
-          <h2 className="font-display text-xl font-semibold text-warm-900 mb-5">
-            <i className="fas fa-lightbulb text-yellow-400 mr-2" /> Consejos Rápidos
+          <h2 className="font-display text-xl font-bold text-warm-900 mb-5 flex items-center gap-2">
+            <span className="text-2xl">💡</span> Consejos Rápidos
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {tips.map((tip) => (
-              <div key={tip.id} className="card bg-yellow-50 border-yellow-100 hover:border-yellow-200 transition-colors">
-                <h3 className="font-semibold text-warm-800 mb-1">{tip.titulo}</h3>
-                <p className="text-sm text-warm-600">{tip.descripcion}</p>
+              <div key={tip.id} className="bg-amber-50 border border-amber-100 rounded-2xl p-5 hover:border-amber-200 hover:shadow-sm transition-all">
+                <h3 className="font-display font-bold text-warm-800 mb-1.5 flex items-center gap-2">
+                  <span>💡</span>{tip.titulo}
+                </h3>
+                <p className="text-sm text-warm-600 leading-relaxed">{tip.descripcion}</p>
               </div>
             ))}
           </div>
