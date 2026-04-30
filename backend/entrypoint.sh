@@ -26,9 +26,6 @@ else:
     exit(1)
 EOF
 
-echo "🔄 Generando migraciones faltantes..."
-python manage.py makemigrations --noinput
-
 echo "🔄 Aplicando migraciones..."
 python manage.py migrate --noinput
 
