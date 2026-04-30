@@ -57,6 +57,15 @@ Para crear un superusuario (acceso al admin):
 docker-compose exec backend python manage.py createsuperuser
 ```
 
+Para inspeccionar la base de datos con pgAdmin:
+- Host: `localhost`, Puerto: `5432`
+- Base de datos: `obrafit_db`, Usuario: `obrafit_user`, Contraseña: `obrafit_pass`
+
+O por consola:
+```bash
+docker-compose exec db psql -U obrafit_user -d obrafit_db
+```
+
 Para detener:
 ```bash
 docker-compose down          # detiene los contenedores
@@ -127,10 +136,10 @@ python scripts/poblar_db_chile.py
 
 ## Resumen de puertos
 
-| Modo | Frontend | Backend API | Admin Django |
-|------|----------|-------------|--------------|
-| Docker (Modo 1) | `localhost` (80) | `localhost/api/` | `localhost/admin/` |
-| Desarrollo local (Modo 2) | `localhost:5173` | `localhost:8000/api/` | `localhost:8000/admin/` |
+| Modo | Frontend | Backend API | Admin Django | PostgreSQL |
+|------|----------|-------------|--------------|------------|
+| Docker (Modo 1) | `localhost` (80) | `localhost/api/` | `localhost/admin/` | `localhost:5432` |
+| Desarrollo local (Modo 2) | `localhost:5173` | `localhost:8000/api/` | `localhost:8000/admin/` | `localhost:5432` |
 
 ---
 
@@ -201,10 +210,11 @@ Flujo: `feature/xxx` → `develop` → `main`
 
 - 🧮 **Calculadora Nutricional** — Fórmula Harris-Benedict, 5 niveles de actividad, 3 objetivos
 - 🍽️ **500+ Recetas** — Categorizadas, con valores nutricionales y tips
-- 📚 **Modo Aprendizaje** — Artículos e infografías sobre nutrición
+- 📚 **Modo Aprendizaje** — Artículos e infografías sobre nutrición (iconos emoji, sin dependencia de Font Awesome)
 - 🎯 **Quiz Interactivo** — 10 preguntas aleatorias con puntaje inmediato
 - 🏆 **Gamificación** — Puntos, niveles y 10 logros desbloqueables
 - 🔒 **Autenticación JWT** — Registro, login y refresh automático de tokens
+- 🎮 **ObraFit Rush** — Minijuego runner estilo Subway Surfers dibujado en Canvas 2D: obrero animado con casco y chaleco, edificios de construcción en perspectiva, grúas, obstáculos de obra (conos, barreras, sacos de cemento, tablones)
 
 ---
 
