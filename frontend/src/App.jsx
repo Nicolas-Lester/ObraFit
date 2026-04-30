@@ -16,6 +16,7 @@ import Perfil from './pages/Perfil'
 import Login from './pages/Login'
 import Registro from './pages/Registro'
 import Acerca from './pages/Acerca'
+import Juego from './pages/Juego'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
             <Route path="aprendizaje" element={<Aprendizaje />} />
             <Route path="aprendizaje/:id" element={<AprendizajeDetalle />} />
             <Route path="quiz" element={<Quiz />} />
+            <Route path="juego" element={<Juego />} />
             <Route path="acerca" element={<Acerca />} />
             <Route path="login" element={<Login />} />
             <Route path="registro" element={<Registro />} />
