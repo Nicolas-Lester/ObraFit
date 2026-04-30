@@ -58,6 +58,7 @@ class Migration(migrations.Migration):
                 'verbose_name': 'Receta Favorita',
                 'verbose_name_plural': 'Recetas Favoritas',
                 'ordering': ['-fecha_agregada'],
+                'unique_together': {('user', 'receta_id')},
             },
         ),
         migrations.CreateModel(
@@ -77,6 +78,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Progreso de Aprendizaje',
                 'verbose_name_plural': 'Progreso de Aprendizaje',
+                'unique_together': {('user', 'leccion_id')},
             },
         ),
         migrations.CreateModel(
@@ -113,18 +115,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Logro Desbloqueado',
                 'verbose_name_plural': 'Logros Desbloqueados',
+                'unique_together': {('user', 'logro')},
             },
-        ),
-        migrations.AlterUniqueTogether(
-            name='recetafavorita',
-            unique_together={('user', 'receta_id')},
-        ),
-        migrations.AlterUniqueTogether(
-            name='progresoaprendizaje',
-            unique_together={('user', 'leccion_id')},
-        ),
-        migrations.AlterUniqueTogether(
-            name='logrodebloqueado',
-            unique_together={('user', 'logro')},
         ),
     ]
