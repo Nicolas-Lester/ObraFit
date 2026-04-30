@@ -95,7 +95,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-warm-100 bg-white px-4 py-3 space-y-1">
+        <div className="md:hidden border-t border-warm-100 bg-white px-4 py-3 space-y-1 animate-slide-down shadow-lg">
           {navLinks.map(({ to, label }) => (
             <NavLink
               key={to}
