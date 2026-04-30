@@ -151,9 +151,15 @@ class QuizResultadoView(APIView):
                 perfil.puntos_totales += puntos_ganados
                 perfil.save()
 
+        puntos_ganados = 0
+        if request.user.is_authenticated:
+            puntos_ganados = puntuacion // 10
+
         return Response({
             'correctas': correctas,
             'total': total,
             'puntuacion': puntuacion,
             'aprobado': puntuacion >= 60,
+            'puntos_ganados': puntos_ganados,
+            'logros_desbloqueados': [],
         })

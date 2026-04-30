@@ -35,7 +35,7 @@ export default function Quiz() {
   const handleEnviar = async () => {
     setEnviando(true)
     try {
-      const data = await recetasService.enviarResultadoQuiz({ respuestas })
+      const data = await recetasService.enviarResultadoQuiz(respuestas)
       setResultado(data)
     } catch {
       alert('Error al enviar el quiz. Inténtalo de nuevo.')
