@@ -27,6 +27,8 @@ services:
     environment:
       DJANGO_SETTINGS_MODULE: config.settings.development
       POSTGRES_HOST: db
+    ports:
+      - "8000:8000"
     volumes:
       - static_files:/app/staticfiles
       - media_files:/app/media
