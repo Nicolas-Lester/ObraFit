@@ -1,0 +1,59 @@
+services:
+  # ─────────────────────── Base de datos ───────────────────────────────
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-obrafit_db}
+      POSTGRES_USER: ${POSTGRES_USER:-obrafit_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-obrafit_pass}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-obrafit_user} -d ${POSTGRES_DB:-obrafit_db}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - obrafit_net
+
+  # ─────────────────────── Backend Django ──────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.development
+      POSTGRES_HOST: db
+    volumes:
+      - static_files:/app/staticfiles
+      - media_files:/app/media
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - obrafit_net
+
+  # ─────────────────────── Frontend React ──────────────────────────────
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - obrafit_net
+
+volumes:
+  postgres_data:
+  static_files:
+  media_files:
+
+networks:
+  obrafit_net:
+    driver: bridge
