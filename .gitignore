@@ -58,3 +58,13 @@ SOLUCION_ENCODING_UTF8.md
 # Archivos de entorno
 .env
 *.env
+
+# Node / React
+node_modules/
+frontend/dist/
+frontend/.cache/
+npm-debug.log*
+yarn-error.log*
+
+# Docker
+.docker/
