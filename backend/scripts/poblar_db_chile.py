@@ -486,20 +486,19 @@ for p in preguntas:
 print("🏆 Creando logros...")
 
 logros = [
-    ("Primera Receta", "Preparaste tu primera receta", "fa-utensils", "primary-500", "primera_receta", 10),
-    ("Chef de Obra", "Preparaste 5 recetas diferentes", "fa-hard-hat", "orange-500", "cinco_recetas", 25),
-    ("Maestro Cocinero", "Preparaste 10 recetas diferentes", "fa-award", "yellow-500", "diez_recetas", 50),
-    ("Estudiante Aplicado", "Completaste tu primer quiz", "fa-graduation-cap", "blue-500", "primer_quiz", 15),
-    ("Puntaje Perfecto", "Sacaste 100% en un quiz", "fa-star", "yellow-500", "quiz_perfecto", 50),
-    ("Una Semana Constante", "Mantuviste una racha de 7 días", "fa-fire", "red-500", "racha_7", 40),
+    ("Primera Receta", "Preparaste tu primera receta", "🍽️", 10),
+    ("Chef de Obra", "Preparaste 5 recetas diferentes", "👷", 25),
+    ("Maestro Cocinero", "Preparaste 10 recetas diferentes", "🏅", 50),
+    ("Estudiante Aplicado", "Completaste tu primer quiz", "🎓", 15),
+    ("Puntaje Perfecto", "Sacaste 100% en un quiz", "⭐", 50),
+    ("Una Semana Constante", "Mantuviste una racha de 7 días", "🔥", 40),
 ]
 
-for nombre, desc, icono, color, condicion, puntos in logros:
+for nombre, desc, icono, puntos in logros:
     Logro.objects.get_or_create(
         nombre=nombre,
         defaults={
-            'descripcion': desc, 'icono': icono, 'color': color,
-            'condicion': condicion, 'puntos': puntos
+            'descripcion': desc, 'icono': icono, 'puntos': puntos
         }
     )
 
