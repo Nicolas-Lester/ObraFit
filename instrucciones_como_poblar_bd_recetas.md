@@ -1,1 +1,0 @@
-# $env:PYTHONIOENCODING='utf-8'; python poblar_db_chile.py
