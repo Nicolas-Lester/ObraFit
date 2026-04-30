@@ -479,7 +479,6 @@ for p in preguntas:
         defaults={
             'opcion_a': p[1], 'opcion_b': p[2], 'opcion_c': p[3], 'opcion_d': p[4],
             'respuesta_correcta': p[5], 'explicacion': p[6],
-            'categoria': p[7], 'nivel_dificultad': p[8]
         }
     )
 
