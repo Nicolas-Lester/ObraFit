@@ -102,10 +102,11 @@ export default function Recetas() {
       {loading ? (
         <Spinner size="lg" className="py-20" />
       ) : recetas.length === 0 ? (
-        <div className="text-center py-16 text-warm-400">
-          <i className="fas fa-search text-4xl mb-3 text-warm-200 block" />
-          <p>No se encontraron recetas con esos filtros.</p>
-          <button onClick={() => setFiltros({ q: '', tipo: '', dificultad: '' })} className="mt-3 text-primary-500 hover:underline text-sm">
+        <div className="text-center py-20">
+          <div className="text-6xl mb-4 opacity-30">🔍</div>
+          <p className="text-warm-500 font-medium mb-2">No se encontraron recetas con esos filtros.</p>
+          <button onClick={() => setFiltros({ q: '', tipo: '', dificultad: '' })}
+            className="mt-2 text-primary-500 hover:text-primary-700 font-semibold text-sm underline underline-offset-2 transition-colors">
             Limpiar filtros
           </button>
         </div>
